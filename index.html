@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #d6e4ff);
+      background: linear-gradient(135deg, #bfe3ff, #7fb7f0);
       min-height: 100vh;
       margin: 0;
       display: flex;
@@ -19,14 +19,14 @@
     .targeta {
       background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba(10, 60, 120, 0.25);
       padding: 28px 32px;
       width: 100%;
       max-width: 420px;
     }
     h1 {
       text-align: center;
-      color: #e63988;
+      color: #1565c0;
       margin-top: 0;
     }
     ul {
@@ -37,11 +37,11 @@
     li {
       margin: 10px 0;
     }
-    li:nth-child(1) label { background: #ffe0e0; }
-    li:nth-child(2) label { background: #fff3cd; }
-    li:nth-child(3) label { background: #d9f7e4; }
-    li:nth-child(4) label { background: #d6ecff; }
-    li:nth-child(5) label { background: #ead9ff; }
+    li:nth-child(1) label { background: #e3f2fd; }
+    li:nth-child(2) label { background: #d0e8fb; }
+    li:nth-child(3) label { background: #bbdefb; }
+    li:nth-child(4) label { background: #d6f0ff; }
+    li:nth-child(5) label { background: #c5d9f5; }
     label {
       display: flex;
       align-items: center;
@@ -50,7 +50,7 @@
       border-radius: 12px;
       cursor: pointer;
       font-size: 18px;
-      color: #333;
+      color: #0d2b4e;
       transition: transform 0.15s;
     }
     label:hover {
@@ -59,12 +59,12 @@
     input[type="checkbox"] {
       width: 22px;
       height: 22px;
-      accent-color: #e63988;
+      accent-color: #1565c0;
       cursor: pointer;
     }
     input[type="checkbox"]:checked + span {
       text-decoration: line-through;
-      color: #999;
+      color: #7a8ca3;
     }
   </style>
 </head>
@@ -79,5 +79,25 @@
       <li><label><input type="checkbox"><span>🎒 Motxilla per anar amb bici</span></label></li>
     </ul>
   </div>
+
+  <script>
+    const caselles = document.querySelectorAll('input[type="checkbox"]');
+    const clau = 'regals-marcats';
+
+    // Recuperar les marques guardades en aquest navegador
+    try {
+      const guardat = JSON.parse(localStorage.getItem(clau) || '[]');
+      caselles.forEach((c, i) => { c.checked = guardat[i] === true; });
+    } catch (e) {}
+
+    // Guardar cada vegada que es marca o desmarca
+    caselles.forEach(c => {
+      c.addEventListener('change', () => {
+        try {
+          localStorage.setItem(clau, JSON.stringify([...caselles].map(x => x.checked)));
+        } catch (e) {}
+      });
+    });
+  </script>
 </body>
 </html>
