@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Llista de regals d'aniversari</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #d6e4ff);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 16px;
+      box-sizing: border-box;
+    }
+    .targeta {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 28px 32px;
+      width: 100%;
+      max-width: 420px;
+    }
+    h1 {
+      text-align: center;
+      color: #e63988;
+      margin-top: 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    li:nth-child(1) label { background: #ffe0e0; }
+    li:nth-child(2) label { background: #fff3cd; }
+    li:nth-child(3) label { background: #d9f7e4; }
+    li:nth-child(4) label { background: #d6ecff; }
+    li:nth-child(5) label { background: #ead9ff; }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #333;
+      transition: transform 0.15s;
+    }
+    label:hover {
+      transform: scale(1.03);
+    }
+    input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: #e63988;
+      cursor: pointer;
+    }
+    input[type="checkbox"]:checked + span {
+      text-decoration: line-through;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="targeta">
+    <h1>🎁 Regals d'aniversari 🎉</h1>
+    <ul>
+      <li><label><input type="checkbox"><span>🚵 Casc de bici de muntanya</span></label></li>
+      <li><label><input type="checkbox"><span>👕 Roba</span></label></li>
+      <li><label><input type="checkbox"><span>🌸 Colònia</span></label></li>
+      <li><label><input type="checkbox"><span>💳 Recàrrega de diners a la targeta</span></label></li>
+      <li><label><input type="checkbox"><span>🎒 Motxilla per anar amb bici</span></label></li>
+    </ul>
+  </div>
+</body>
+</html>
