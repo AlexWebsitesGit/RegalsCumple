@@ -82,20 +82,22 @@
 
   <script>
     const caselles = document.querySelectorAll('input[type="checkbox"]');
-    const clau = 'regals-marcats';
+    const clau = 'llista-regals-aniversari-v1';
 
-    // Recuperar les marques guardades en aquest navegador
-    try {
-      const guardat = JSON.parse(localStorage.getItem(clau) || '[]');
-      caselles.forEach((c, i) => { c.checked = guardat[i] === true; });
-    } catch (e) {}
+    function llegir() {
+      try { return JSON.parse(localStorage.getItem(clau)) || {}; }
+      catch (e) { return {}; }
+    }
 
-    // Guardar cada vegada que es marca o desmarca
+    const guardat = llegir();
     caselles.forEach(c => {
+      const nom = c.nextElementSibling.textContent.trim();
+      c.checked = guardat[nom] === true;
+
       c.addEventListener('change', () => {
-        try {
-          localStorage.setItem(clau, JSON.stringify([...caselles].map(x => x.checked)));
-        } catch (e) {}
+        const estat = llegir();
+        estat[nom] = c.checked;
+        try { localStorage.setItem(clau, JSON.stringify(estat)); } catch (e) {}
       });
     });
   </script>
